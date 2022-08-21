@@ -1,0 +1,23 @@
+<html>
+<title>Display number of seconds in human readable format</title>
+<body>
+	<p>Time</p>
+	<input type=text id=txtTime>
+	<input type=submit name=btnSubmit value=Continue onclick=fnContinue(txtTime.value)>
+</body>
+<script>
+function fnContinue(num) {
+	var aTime = [60,60,24,365]; // Time dimensions.
+	var aWords = ["Seconds","Minutes","Hours","Days"]; //Time in words
+	var iLength = aTime.length;
+	var strOutput = " ";
+	for (let i=0; i<iLength; i++) {
+		var iMod = num % aTime[i];
+		var iRem = num - iMod;
+		strOutput = iMod + " " + aWords[i] + " " + strOutput;
+		num = iRem / aTime[i];
+	}
+	alert (num + " Years " + strOutput);
+}
+</script>
+</html>
